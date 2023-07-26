@@ -20,6 +20,8 @@ langflow # or langflow --help
 
 ## 📦 Docker based Installation
 ### <b>Locally</b>
+You can install Langflow Using Docker Desktop:
+
 ```shell
 cd langflow-dev
 ```
