@@ -28,7 +28,7 @@ cd langflow-dev
 Next, run:
 
 ```shell
-docker build -f dev.Dockerfile . -t dev.Dockerfile
+docker build -f dev.Dockerfile . -t dev.dockerfile
 ```
 Then, run:
 ```shell
