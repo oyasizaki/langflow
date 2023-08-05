@@ -23,6 +23,7 @@ langflow # or langflow --help
 You can install Langflow Using Docker Desktop:
 
 ```shell
+git clone https://github.com/logspace-ai/langflow.git
 cd langflow-dev
 ```
 Next, run:
