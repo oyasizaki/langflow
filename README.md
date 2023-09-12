@@ -21,10 +21,10 @@ langflow # or langflow --help
 
 IF YOU Face any dependency version related problem then set the version while installing langflow using pip:
 * first clone the github repo of langflow with git clone command
-* then use cd langflow to go to the lanflow folder inside the terminal. Finally, use this command: pip3 install:
+* then use cd langflow to go to the lanflow folder inside the terminal. Finally, use this command:
 
 ```shell
-opentelemetry-sdk >=1.14.0,<1.20.0
+pip3 install "opentelemetry-sdk >=1.14.0,<1.20.0" langflow
 ```
 
 
