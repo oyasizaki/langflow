@@ -17,6 +17,26 @@ or
 ```shell
 langflow # or langflow --help
 ```
+
+### <b>Version</b>
+To install a specific version of langflow 
+```shell
+pip install langflow==<version>
+```
+For example:
+```shell
+pip install langflow==0.5.0
+```
+Acc setup:
+```shell
+langflow superuser --username=test --password=test
+```
+To run:
+```shell
+langflow run
+```
+
+
 ### <b>Conflicting Dependency</b>
 
 IF YOU Face any dependency version related problem then set the version while installing langflow using pip:
