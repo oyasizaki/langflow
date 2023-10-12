@@ -36,6 +36,20 @@ To run:
 langflow run
 ```
 
+### <b>Dependencies</b>
+CTransformers
+```shell
+pip install ctransformers
+```
+llama-cpp-python
+```shell
+pip install llama-cpp-python
+```
+sentence-transformers
+```shell
+pip install -U sentence-transformers
+```
+
 
 ### <b>Conflicting Dependency</b>
 
