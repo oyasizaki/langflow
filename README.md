@@ -36,6 +36,9 @@ To run:
 langflow run
 ```
 
+
+
+
 ### <b>Dependencies</b>
 CTransformers
 ```shell
@@ -60,7 +63,10 @@ IF YOU Face any dependency version related problem then set the version while in
 ```shell
 pip3 install "opentelemetry-sdk >=1.14.0,<1.20.0" langflow
 ```
-
+jq problem solution
+```shell
+pip install langflow==0.6.3a1
+```
 
 
 ## 📦 Docker based Installation
