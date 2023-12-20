@@ -54,6 +54,11 @@ pip install -U sentence-transformers
 ```
 
 
+### <b>Installing packaged langflow ver 0.6.2 </b>
+```shell
+pip install -r requirements.txt
+```
+
 ### <b>Conflicting Dependency</b>
 
 IF YOU Face any dependency version related problem then set the version while installing langflow using pip:
