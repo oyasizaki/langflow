@@ -56,7 +56,7 @@ pip install -U sentence-transformers
 
 ### <b>Installing packaged langflow</b>
 ```shell
-pip install -r requirements<version>.txt
+pip install -r requirements_<version>.txt
 ```
 
 ### <b>Conflicting Dependency</b>
