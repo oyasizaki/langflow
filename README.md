@@ -1,5 +1,10 @@
 # langflow
 
+### <b>Installing packaged langflow (version control)</b>
+```shell
+pip install -r requirements_<version>.txt
+```
+
 ## 📦 Direct Installation
 ### <b>Locally</b>
 You can install Langflow from pip:
@@ -54,10 +59,6 @@ pip install -U sentence-transformers
 ```
 
 
-### <b>Installing packaged langflow (version control)</b>
-```shell
-pip install -r requirements_<version>.txt
-```
 
 ### <b>Conflicting Dependency</b>
 
