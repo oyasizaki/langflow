@@ -5,7 +5,7 @@
 pip install -r requirements_<version>.txt
 ```
 
-## 📦 Direct Installation
+## 🔥 Direct Installation
 ### <b>Locally</b>
 You can install Langflow from pip:
 
