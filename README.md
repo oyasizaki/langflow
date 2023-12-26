@@ -54,7 +54,7 @@ pip install -U sentence-transformers
 ```
 
 
-### <b>Installing packaged langflow</b>
+### <b>Installing packaged langflow (version control)</b>
 ```shell
 pip install -r requirements_<version>.txt
 ```
