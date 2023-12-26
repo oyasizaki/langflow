@@ -75,7 +75,7 @@ pip install langflow==0.6.3a1
 ```
 
 
-## 📦 Docker based Installation
+## 📦 ![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/1495b624-4eb4-42d2-808b-fbdb1e8dfdbf) Docker based Installation
 ### <b>Locally</b>
 You can install Langflow Using Docker Desktop:
 
