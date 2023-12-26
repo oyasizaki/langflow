@@ -1,6 +1,6 @@
 # langflow
 
-### <b>Installing packaged langflow (version control)</b>
+### 📦 <b>Installing packaged langflow (version control)</b>
 ```shell
 pip install -r requirements_<version>.txt
 ```
