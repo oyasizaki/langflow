@@ -88,11 +88,15 @@ git clone https://github.com/logspace-ai/langflow.git
 cd langflow
 ```
 Next, run:
-
 ```shell
-docker build -f dev.Dockerfile . -t dev.dockerfile
+cp .env.example .env
 ```
 Then, run:
 ```shell
 docker-compose up -d
 ```
+#### exception
+```shell
+docker build -f dev.Dockerfile . -t dev.dockerfile
+```
+
