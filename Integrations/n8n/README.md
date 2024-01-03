@@ -5,5 +5,5 @@
 ![Img](images/email.jpeg)
 ![Img](images/trigger.jpeg)
 ![Img](images/telegram.jpeg)
-![Img](images/output.jpeg)
+![Img](images/Output.jpeg)
 
