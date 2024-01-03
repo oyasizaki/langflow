@@ -7,3 +7,4 @@
 ![Img](images/telegram.jpeg)
 ![Img](images/Output.jpeg)
 
+<img src="images/telegram.jpeg" alt="Image" width="300" height="200">
