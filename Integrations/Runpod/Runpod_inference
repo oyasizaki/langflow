@@ -1,0 +1,62 @@
+from typing import Optional
+from langflow import CustomComponent
+import runpod  # Import RunPod library here
+from langchain.llms import HuggingFaceTextGenInference
+import os
+from langchain.llms.base import BaseLLM  # Make sure to import the correct BaseLLM from your setup
+
+
+class RunPodComponent(CustomComponent):
+    display_name: str = "RunPod Inference"
+    description: str = "LLM model from RunPod Inference."
+
+    def build_config(self):
+        return {
+            "api_key": {"display_name": "RunPod API Key", "password": True},
+            # Add other necessary configurations for RunPod here
+            # e.g., name, image_name, gpu_count, etc.
+        }
+
+
+    def build(
+        self,
+        api_key: str,
+        # Add other necessary parameters for RunPod here
+        # e.g., name, image_name, gpu_count, etc.
+    ) -> BaseLLM:
+        try:
+            runpod.api_key = api_key  # Set RunPod API key
+            # Example of taking other necessary inputs from the user
+            gpu_count = 1
+            # Your RunPod instantiation logic here
+            pod = runpod.create_pod(
+                    name="Llama-7b-chat",
+                    image_name="ghcr.io/huggingface/text-generation-inference:0.9.4",
+                    gpu_type_id="NVIDIA GeForce RTX 4090",
+                    cloud_type="SECURE",
+                    docker_args="--model-id TheBloke/Llama-2-7B-Chat-fp16",
+                    gpu_count=gpu_count,
+                    volume_in_gb=50,
+                    container_disk_in_gb=5,
+                    ports="80/http",
+                    volume_mount_path="/data",
+                )
+            inference_server_url = f'https://{pod["id"]}-80.proxy.runpod.net'
+            # Create and return your RunPod-based LLM here
+            llm = HuggingFaceTextGenInference(
+                    inference_server_url=inference_server_url,
+                    max_new_tokens=1000,
+                    top_k=10,
+                    top_p=0.95,
+                    typical_p=0.95,
+                    temperature=0.1,
+                    repetition_penalty=1.03)
+            return llm
+        except Exception as e:
+            raise ValueError(f"Could not connect to RunPod. Original error type: {type(e).name}, Original error message: {str(e)}") from e
+        return llm  # Modify the return type as per your RunPod LLM instance
+
+# Usage:
+# Assuming you have configured the HuggingFaceEndpointsComponent in your pipeline
+# Replace it with the RunPodComponent
+# llm = RunPodComponent().build(api_key="your_runpod_api_key", ...)  # Pass necessary parameters
