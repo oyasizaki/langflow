@@ -4,8 +4,11 @@
 
 
 ## 📦 <b>Requirements</b>
+
 •	Docker
+<br>
 •	Langflow
+<br>
 •	Node.js and npm (https://nodejs.org/en )
 <br>
 •	npm install -g npm@10.2.0
