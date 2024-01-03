@@ -4,7 +4,6 @@
 ![Img](images/http_2.jpeg)
 ![Img](images/email.jpeg)
 ![Img](images/trigger.jpeg)
-![Img](images/telegram.jpeg)
+<img src="images/telegram.jpeg" alt="Image" width="200" height="400">
 ![Img](images/Output.jpeg)
 
-<img src="images/telegram.jpeg" alt="Image" width="200" height="400">
