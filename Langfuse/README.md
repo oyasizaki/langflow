@@ -46,7 +46,7 @@ npx prisma migrate deploy
 ![Img](Images/settings.png)
 ![Img](Images/settings_2.png)
 
-## 📦 <b>API Generation</b>
+## 📦 <b>API generate</b>
 ![Img](Images/api.png)
 
 ### 📦 <b>Integration</b>
