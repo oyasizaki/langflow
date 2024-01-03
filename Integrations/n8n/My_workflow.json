@@ -1,0 +1,485 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowiseai-flowise.hf.space/api/v1/prediction/5db5dedb-fbb9-4b88-af80-cfcd5a7bc6cb",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "={{ $node[\"Telegram trigger\"].json[\"message\"][\"text\"] }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "617f02ed-5f98-4f6e-99be-55b8ba0c9852",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.message.chat.id }}",
+              "operation": "equal",
+              "value2": 6090668402
+            }
+          ]
+        }
+      },
+      "id": "6f804e4f-5d2d-4b02-a54d-1571f09bf451",
+      "name": "Check chat ID",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "seconds"
+      },
+      "id": "ef511e2b-ba05-471d-84eb-3a028c4606b4",
+      "name": "Wait 3 seconds",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        2680,
+        1680
+      ],
+      "webhookId": "5927178d-1fed-4ee6-bcad-c83fec83c92a"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $node['Telegram trigger'].json.message.chat.id }}",
+        "text": "I'm not authorized to speak with you. ",
+        "additionalFields": {}
+      },
+      "id": "beceb785-8c6e-410d-a0c0-e16f1f541f0a",
+      "name": "Send unauthorized info [TELEGRAM]",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        1680
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "Zo46EdEksFOD9i6U",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "You're an assistant called WorkfloowsAI. Your task is to help user with daily tasks."
+            },
+            {
+              "role": "assistant",
+              "content": "="
+            },
+            {
+              "content": "={{ $node[\"Telegram trigger\"].json[\"message\"][\"text\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "745329e6-277f-438d-9441-e3ebb2fc29a3",
+      "name": "Generate answer [OPENAI]",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        480,
+        1320
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "0Yeq2ohy9yvbEcNE",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.message.text }}",
+              "value2": "/start"
+            }
+          ]
+        }
+      },
+      "id": "8e341777-2992-4158-aa2c-7e5c74e114b6",
+      "name": "Check if start",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        1340
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "ef0d668b-1076-494f-92fc-2c90bbb80411",
+      "name": "No operation",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        1120
+      ]
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "id": "7d0adc70-1e67-43d1-9bd6-8b25707ab0ce",
+      "name": "Telegram trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1,
+      "position": [
+        1780,
+        1340
+      ],
+      "webhookId": "64456f84-9a61-4ccc-a28c-3aca7a498103",
+      "credentials": {
+        "telegramApi": {
+          "id": "Zo46EdEksFOD9i6U",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Trigger\nRemember to add credentials of your Telegram bot.",
+        "height": 339.51767272727324,
+        "width": 182.4715262478496
+      },
+      "id": "a9ae1da2-1501-44f7-9c44-92c0e3d79c3d",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1740,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Ignore start\nThis node will ignore initial ```/start``` message that is sent by first conversation with bot.",
+        "height": 339.51767272727324,
+        "width": 182.4715262478496
+      },
+      "id": "2d466d12-0c98-48e4-9b74-b64e90ed8064",
+      "name": "Sticky Note7",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1940,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Authorize\nChange default value ```0``` to your 10-digit chat ID to authorize conversation and disable other people to talk to your bot.",
+        "height": 367.74256847311284,
+        "width": 182.4715262478496
+      },
+      "id": "a4678e9f-e112-4d8b-9e9d-be626f15adaa",
+      "name": "Sticky Note8",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $json.message.chat.id }}"
+      },
+      "id": "64c2cfa6-3c37-4957-84ba-325472fb483c",
+      "name": "Send typing action [TELEGRAM] [1]",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        1320
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "Zo46EdEksFOD9i6U",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Send \"unauthorized\" message\nWhen unknown user (chat ID) wants to come into interaction with bot, workflow will send \"typing\" action, wait 3 seconds and respond: *\"I'm not authorized to speak with you\"*.",
+        "height": 339.42690909090965,
+        "width": 643.3545239632286
+      },
+      "id": "3843a2e1-1572-4e54-a929-321d5ea3d539",
+      "name": "Sticky Note9",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        1540
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Generate response\nThis sequence sends \"typing action\", gets answer from GPT and returns message to authorized user. Feel free to play with prompt, configuration etc.",
+        "height": 339.42690909090965,
+        "width": 643.3545239632286
+      },
+      "id": "a516f64d-74d6-4965-851d-361236c7ce5a",
+      "name": "Sticky Note11",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2420,
+        1180
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $json.message.chat.id }}"
+      },
+      "id": "e2116e00-96b7-4627-92e0-0b900195af78",
+      "name": "Send typing action [TELEGRAM] [2]",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        2480,
+        1680
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "Zo46EdEksFOD9i6U",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://flowiseai-flowise.hf.space/api/v1/prediction/5db5dedb-fbb9-4b88-af80-cfcd5a7bc6cb",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "question",
+              "value": "Hey, how are you?"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "id": "52fbc6da-a5d8-44c8-ae3a-74f26dc70ff2",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        2700,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $node['Check chat ID'].json.message.chat.id }}",
+        "text": "={{$json.data }}",
+        "additionalFields": {}
+      },
+      "id": "845ff518-4252-462b-98a5-29367d27db52",
+      "name": "Send response [TELEGRAM]1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        700,
+        1040
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "Zo46EdEksFOD9i6U",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "soloplayeraymen299@gmail.com",
+        "toEmail": "oyasizakiaymen@gmail.com",
+        "subject": "=Langflow",
+        "emailFormat": "text",
+        "text": "={{$json.data }}",
+        "options": {}
+      },
+      "id": "a23d3834-3d64-4832-bc23-092ff6c23820",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        2900,
+        1320
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "IJYaKn8VM41ztuxH",
+          "name": "SMTP account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    },
+    "Check chat ID": {
+      "main": [
+        [
+          {
+            "node": "Send typing action [TELEGRAM] [1]",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send typing action [TELEGRAM] [2]",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 3 seconds": {
+      "main": [
+        [
+          {
+            "node": "Send unauthorized info [TELEGRAM]",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate answer [OPENAI]": {
+      "main": [
+        []
+      ]
+    },
+    "Check if start": {
+      "main": [
+        [
+          {
+            "node": "No operation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check chat ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram trigger": {
+      "main": [
+        [
+          {
+            "node": "Check if start",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send typing action [TELEGRAM] [1]": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send typing action [TELEGRAM] [2]": {
+      "main": [
+        [
+          {
+            "node": "Wait 3 seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "6f0ae0df-f690-447a-b780-b25b92cbf336",
+  "id": "ooKgx8aP4MAwxbmN",
+  "meta": {
+    "instanceId": "33f83ec56bb4181e9a025c276e6d0e106e3d0da4085bbfeb778507c79fcb98d1"
+  },
+  "tags": []
+}
