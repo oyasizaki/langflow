@@ -28,4 +28,4 @@ $env:DIRECT_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
 npx prisma migrate deploy
 ```
 ### 📦 <b>Terminal View</b>
-![Login](Image/docker.png)
+![Login](Images/docker.png)
