@@ -36,7 +36,7 @@ npx prisma migrate deploy
 ![Img](Images/docker.png)
 ![Img](Images/docker_2.png)
 ![Img](Images/install.png)
-![Img](Images/install_2.png)
+![Img](Images/Install_2.png)
 
 ## 📦 <b>Create account</b>
 ![Img](Images/acc.png)
