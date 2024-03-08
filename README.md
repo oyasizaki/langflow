@@ -1,6 +1,15 @@
 # langflow
 
 ### 📦 <b>Installing packaged langflow (version control)</b>
+
+```shell
+git clone https://github.com/oyasizaki/langflow-additional.git
+```
+```shell
+cd Version_Control
+```
+
+
 ```shell
 pip install -r requirements_<version>.txt
 ```
