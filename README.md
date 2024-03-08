@@ -23,15 +23,15 @@ pip install langflow
 ```
 
 Next, run:
+```shell
+langflow run # or langflow --help
+```
+
+or
 
 ```shell
 python -m langflow
 ```
-or
-```shell
-langflow # or langflow --help
-```
-
 ### <b>Version</b>
 To install a specific version of langflow 
 ```shell
