@@ -2,14 +2,16 @@
 
 ## 📦 <b>Requirements</b>
 
-•	Docker
+•	Streamlit
 <br>
 •	Langflow
 <br>
 
+```shell
+pip install streamlit streamlit_chat -Uq
+```
 
 
-![Img](images/api.jpeg)
-![Img](images/inte.jpeg)
-![Img](images/erp_int.jpeg)
+![Img](output/png)
+
 
