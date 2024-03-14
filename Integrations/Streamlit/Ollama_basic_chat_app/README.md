@@ -12,6 +12,6 @@ pip install streamlit streamlit_chat -Uq
 ```
 
 
-![Img](output/png)
+![Img](Output/png)
 
 
