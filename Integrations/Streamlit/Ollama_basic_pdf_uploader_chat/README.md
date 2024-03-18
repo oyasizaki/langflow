@@ -17,7 +17,8 @@ Please take note that pdf should be in the same directory as the app file
 
 
 ### Flow
-![flow](https://github.com/oyasizaki/langflow-additional/assets/118342512/be077057-b939-4a39-95b0-46c27cefcee5)
+![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/b24de5c3-95ff-4c6b-a85a-d197502199f7)
+
 
 ### Output
 ![output](https://github.com/oyasizaki/langflow-additional/assets/118342512/499ec434-286a-458d-b611-6fc72203dffe)
