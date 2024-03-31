@@ -7,6 +7,7 @@
 •	Langflow
 <br>
 
+# Dependencies Installation
 
 ```shell
 pip install python-dotenv
