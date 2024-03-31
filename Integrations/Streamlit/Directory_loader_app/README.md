@@ -33,7 +33,7 @@ I have added some test pdf file in this repo for test purposes. feel free to use
 
 
 # Directory
-Add all the files in a folder then copy the path (when you are inside the) and paste it in the app to chat with them
+Add all the files in a folder then copy the path (when you are inside the folder) and paste it in the app to chat with them
 ![Screenshot (1)](https://github.com/oyasizaki/langflow-additional/assets/118342512/f7b01ef0-ea26-4c15-8d43-b559c94884be)
 
 
