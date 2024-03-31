@@ -7,6 +7,11 @@
 •	Langflow
 <br>
 
+
+```shell
+pip install streamlit streamlit_chat -Uq
+```
+
 ### Test file
 I have added some test pdf file in this repo for test purposes. feel free to use them.
 
