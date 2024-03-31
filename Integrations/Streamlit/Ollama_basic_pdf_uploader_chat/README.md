@@ -9,6 +9,21 @@
 
 
 ```shell
+pip install python-dotenv
+```
+
+
+```shell
+pip install htbuilder
+```
+
+
+```shell
+pip install streamlit_extras
+```
+
+
+```shell
 pip install streamlit streamlit_chat -Uq
 ```
 
