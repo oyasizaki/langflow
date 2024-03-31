@@ -38,7 +38,8 @@ I have added some test pdf file in this repo for test purposes. feel free to use
 
 
 ### Output
-![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/458b9c85-2219-4720-b108-d8441379a37a)
+![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/a79db296-187d-48f4-80d2-945e11adb9ea)
+
 
 
 
