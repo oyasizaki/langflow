@@ -31,16 +31,13 @@ pip install streamlit streamlit_chat -Uq
 ### Test file
 I have added some test pdf file in this repo for test purposes. feel free to use them.
 
-### Directory 
-Please take note that pdf should be in the same directory as the app file
-![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/905f60e0-f9ed-499b-a69d-0efc1065e0b6)
-
-
 
 ### Flow
-![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/b24de5c3-95ff-4c6b-a85a-d197502199f7)
+![flow](https://github.com/oyasizaki/langflow-additional/assets/118342512/7aa88323-ac90-40ce-850a-e87aceacb638)
+
 
 
 ### Output
-![output](https://github.com/oyasizaki/langflow-additional/assets/118342512/499ec434-286a-458d-b611-6fc72203dffe)
+![Output](https://github.com/oyasizaki/langflow-additional/assets/118342512/03af30b0-37e0-430c-a248-bf48a5115e79)
+
 
