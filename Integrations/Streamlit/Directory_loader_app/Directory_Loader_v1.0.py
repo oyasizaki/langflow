@@ -4,7 +4,7 @@ Created on Apr 01
 
 @author: Oyasi
 
-@app: v0.9
+@app: v1.0
 """
 
 
