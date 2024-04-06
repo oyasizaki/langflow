@@ -71,7 +71,7 @@ pip install -U sentence-transformers
 
 
 
-## Docker based Installation
+## Docker based Installation ![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/776fe511-7519-4a2c-baa2-e0805d646ee3) 
 ### <b>Locally</b>
 You can install Langflow Using Docker Desktop:
 
@@ -198,5 +198,3 @@ Delete the files in the following folder shown in the image and rerun langflow t
 ![WhatsApp Image 2024-04-06 at 7 52 26 AM](https://github.com/oyasizaki/langflow-additional/assets/118342512/4f8f2ad7-c618-4594-972e-24ed7bbb1f0c)
 
 
-
-![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/776fe511-7519-4a2c-baa2-e0805d646ee3) 
