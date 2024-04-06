@@ -83,7 +83,7 @@ pip3 install "opentelemetry-sdk >=1.14.0,<1.20.0" langflow
 ```
 
 ### <b>DB / alembic / user id issue</b>
-Delete the files in the following folder shown in the image and rerun langflow to solve the problem
+Delete the files inside of the folder shown in the image and rerun langflow to solve the problem
 ![WhatsApp Image 2024-04-06 at 7 52 26 AM](https://github.com/oyasizaki/langflow-additional/assets/118342512/4f8f2ad7-c618-4594-972e-24ed7bbb1f0c)
 
 
