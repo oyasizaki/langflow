@@ -67,6 +67,7 @@ sentence-transformers
 pip install -U sentence-transformers
 ```
 
+## Issues
 
 ### <b>Conflicting Dependency</b>
 
