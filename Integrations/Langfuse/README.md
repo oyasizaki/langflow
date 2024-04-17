@@ -29,14 +29,8 @@ $env:DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
 ```shell
 $env:DIRECT_URL = "postgresql://postgres:postgres@localhost:5432/postgres"
 ```
-```shell
-npx prisma migrate deploy
-```
-## 📦 <b>Terminal View</b>
-![Img](Images/docker.png)
-![Img](Images/docker_2.png)
-![Img](Images/install.png)
-![Img](Images/Install_2.png)
+
+
 
 ## 📦 <b>Create account</b>
 ![Img](Images/acc.png)
