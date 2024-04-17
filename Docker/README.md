@@ -17,7 +17,6 @@ cd docker_example
 
 #### Now edit the docker-compose.yaml file as shown below .
 ```shell
-
 version: "3.8"
 
 services:
@@ -49,7 +48,6 @@ volumes:
   langflow-postgres:
   langflow-data:
 
-
 ```
 #### <b>Or</b>
 * Delete the existing docker-compose.yaml
@@ -72,6 +70,8 @@ Go to `localhost:7860`
 ```shell
 If you face can't reach the UI then Go to the containers in Docker desktop and make sure all the langflow container is running
 it should solve the problem
+![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/b275d889-5d08-460a-93a3-98d13d320e38)
+
 ```
 
 
