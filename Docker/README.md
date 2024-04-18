@@ -15,7 +15,7 @@ cd langflow
 cd docker_example
 ```
 
-#### Now edit the docker-compose.yaml file as shown below .
+#### Now edit the docker-compose.yml file as shown below .
 ```shell
 version: "3.8"
 
@@ -50,8 +50,8 @@ volumes:
 
 ```
 #### <b>Or</b>
-* Delete the existing docker-compose.yaml
-* Download the docker-compose.yaml from this repo
+* Delete the existing docker-compose.yml
+* Download the docker-compose.yml from this repo
 * Save it in the `docker_example` directory
 
 
