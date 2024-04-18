@@ -67,10 +67,10 @@ Go to `localhost:7860`
 
 
 #### exception
-```shell
-If you face can't reach the UI then Go to the containers in Docker desktop and make sure all the langflow container is running
+`
+If you face can't reach the UI then Go to the containers in Docker desktop and make sure all the langflow container are running
 it should solve the problem
-```
+`
 ![image](https://github.com/oyasizaki/langflow-additional/assets/118342512/b275d889-5d08-460a-93a3-98d13d320e38)
 
 
