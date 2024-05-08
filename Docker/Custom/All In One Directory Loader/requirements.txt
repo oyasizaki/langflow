@@ -1,0 +1,45 @@
+#### This is for doker langflow 
+#### Install the below dependencies in the  "docker_example-langflow-1" container
+#### go to Exec and enter the command lines there
+
+
+
+
+pip3 install pdfminer.six
+pip install "unstructured[all-docs]"
+pip install pillow-heif 
+pip install pdf2image 
+pip3 install opencv-python 
+
+su
+cd ..
+apt update
+apt install tesseract-ocr
+pip install pytesseract
+apt install curl
+pip install rapidocr-onnxruntime
+apt-get install libgl1-mesa-glx
+apt-get install libglib2.0-dev
+pip install numpy scipy matplotlib scikit-learn jupyter
+pip install opencv-contrib-python
+apt update
+apt install cmake
+apt update
+apt install git
+apt update
+apt install g++
+# Clone the dlib repository
+git clone https://github.com/davisking/dlib.git
+# Navigate to the cloned directory
+cd dlib
+# Build and install dlib
+python setup.py install
+
+"
+Notice: Even after the installing all the dependencies 
+there are other two dependencies and some data that need to be downloaded 
+these will be downloaded while running the flow  
+Keep running the flow even if it doesn't compile and 
+shows worker timeout error because it takes time for it 
+to download(as it depends on your internet speed) the file which gets 
+blocker by worker timeout"
