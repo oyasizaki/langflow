@@ -1,1 +1,1 @@
-## This Directory Provides Integration methods of different app with Langflow
+## This Directory Provides Custom flows and nodes for docker langflow specially
