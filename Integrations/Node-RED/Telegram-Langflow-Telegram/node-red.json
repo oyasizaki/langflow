@@ -1,0 +1,139 @@
+[
+    {
+        "id": "2c965cc9ab3a1566",
+        "type": "tab",
+        "label": "Telegram to Email Flow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a782c24a60bbd82f",
+        "type": "chatbot-telegram-receive",
+        "z": "2c965cc9ab3a1566",
+        "bot": "telegram_bot",
+        "botProduction": "telegram_bot",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "3e2fc7c2a52615d0"
+            ]
+        ]
+    },
+    {
+        "id": "3e2fc7c2a52615d0",
+        "type": "function",
+        "z": "2c965cc9ab3a1566",
+        "name": "Prepare Payload for Langflow",
+        "func": "const BASE_API_URL = \"http://localhost:7860/api/v1/process\";\nconst FLOW_ID = \"6bcaaf3f-c6d6-4844-8253-d941ad375bcd\";\nconst TWEAKS = {\n    \"ConversationChain-d092q\": {},\n    \"ChatOpenAI-K6BX1\": {}\n};\n\nmsg.url = `${BASE_API_URL}/${FLOW_ID}`;\nmsg.payload = {\n    inputs: {\"input\": msg.payload.content},  // Get the input from the Telegram message\n    tweaks: TWEAKS\n};\nmsg.headers = {\n    'Content-Type': 'application/json'\n};\nmsg.chatId = msg.originalMessage.chat.id;  // Save the chat ID\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "cef3ed718e817d08"
+            ]
+        ]
+    },
+    {
+        "id": "cef3ed718e817d08",
+        "type": "http request",
+        "z": "2c965cc9ab3a1566",
+        "name": "Call Langflow API",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{url}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 200,
+        "wires": [
+            [
+                "3aa1a4880f41b506"
+            ]
+        ]
+    },
+    {
+        "id": "3aa1a4880f41b506",
+        "type": "function",
+        "z": "2c965cc9ab3a1566",
+        "name": "Format Langflow Response",
+        "func": "if (msg.payload && msg.payload.result && msg.payload.result.response) {\n    msg.payload = {\n        chatId: msg.chatId,  // Use the saved chat ID\n        type: 'message',\n        content: msg.payload.result.response\n    };\n} else {\n    msg.payload = {\n        chatId: msg.chatId,  // Use the saved chat ID\n        type: 'message',\n        content: 'Error: Invalid response from API'\n    };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 200,
+        "wires": [
+            [
+                "9b44cea48a7c4865",
+                "ae081148fdc93101"
+            ]
+        ]
+    },
+    {
+        "id": "9b44cea48a7c4865",
+        "type": "e-mail",
+        "z": "2c965cc9ab3a1566",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": false,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": false,
+        "name": "oyasizakiaymen@gmail.com",
+        "dname": "Send Email",
+        "x": 1170,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "ae081148fdc93101",
+        "type": "debug",
+        "z": "2c965cc9ab3a1566",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "telegram_bot",
+        "type": "chatbot-telegram-node",
+        "botname": "lngnr_bot",
+        "usernames": "",
+        "polling": "1000",
+        "store": "",
+        "log": "",
+        "debug": false,
+        "skipMediaFiles": false,
+        "webHook": "",
+        "connectMode": "polling",
+        "storeMessages": false,
+        "enableMissionControl": false,
+        "inspectMessages": false,
+        "chatbotId": ""
+    }
+]

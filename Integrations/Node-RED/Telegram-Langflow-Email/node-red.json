@@ -1,0 +1,137 @@
+[
+    {
+        "id": "8efde203132c6995",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4e578e70a5866984",
+        "type": "chatbot-telegram-receive",
+        "z": "8efde203132c6995",
+        "bot": "telegram_bot",
+        "botProduction": "telegram_bot",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "590daeb4ff515e51"
+            ]
+        ]
+    },
+    {
+        "id": "590daeb4ff515e51",
+        "type": "function",
+        "z": "8efde203132c6995",
+        "name": "Prepare Payload",
+        "func": "const BASE_API_URL = \"http://localhost:7860/api/v1/process\";\nconst FLOW_ID = \"ab478556-83d4-44ca-9b37-94386ec41605\";\nconst TWEAKS = {\n    \"ChatOpenAI-fRulp\": {},\n    \"ConversationChain-BSyyU\": {}\n};\n\nmsg.url = `${BASE_API_URL}/${FLOW_ID}`;\nmsg.payload = {\n    inputs: {\"input\": msg.payload.content},  // Get the input from the Telegram message\n    tweaks: TWEAKS\n};\nmsg.headers = {\n    'Content-Type': 'application/json'\n};\nmsg.chatId = msg.originalMessage.chat.id;  // Save the chat ID\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "275f88616376442b"
+            ]
+        ]
+    },
+    {
+        "id": "275f88616376442b",
+        "type": "http request",
+        "z": "8efde203132c6995",
+        "name": "Call Langflow API",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "{{{url}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 600,
+        "y": 100,
+        "wires": [
+            [
+                "179c30320b9038e5"
+            ]
+        ]
+    },
+    {
+        "id": "6fa2228f0e6e1554",
+        "type": "chatbot-telegram-send",
+        "z": "8efde203132c6995",
+        "bot": "telegram_bot",
+        "botProduction": "telegram_bot",
+        "track": false,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 0,
+        "x": 1090,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "23795a51ff805fb7",
+        "type": "debug",
+        "z": "8efde203132c6995",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "179c30320b9038e5",
+        "type": "function",
+        "z": "8efde203132c6995",
+        "name": "Format Response",
+        "func": "if (msg.payload && msg.payload.result && msg.payload.result.response) {\n    msg.payload = {\n        chatId: msg.chatId,  // Use the saved chat ID\n        type: 'message',\n        content: msg.payload.result.response\n    };\n} else {\n    msg.payload = {\n        chatId: msg.chatId,  // Use the saved chat ID\n        type: 'message',\n        content: 'Error: Invalid response from API'\n    };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 100,
+        "wires": [
+            [
+                "6fa2228f0e6e1554",
+                "23795a51ff805fb7"
+            ]
+        ]
+    },
+    {
+        "id": "telegram_bot",
+        "type": "chatbot-telegram-node",
+        "botname": "lngnr_bot",
+        "usernames": "",
+        "polling": "1000",
+        "store": "",
+        "log": "",
+        "debug": false,
+        "skipMediaFiles": false,
+        "webHook": "",
+        "connectMode": "polling",
+        "storeMessages": false,
+        "enableMissionControl": false,
+        "inspectMessages": false,
+        "chatbotId": ""
+    }
+]
