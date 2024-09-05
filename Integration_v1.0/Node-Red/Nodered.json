@@ -1,0 +1,176 @@
+[
+    {
+        "id": "838919a0b4c3faa7",
+        "type": "tab",
+        "label": "Telegram to Langflow",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "b7ae2574aaf21011",
+        "type": "function",
+        "z": "838919a0b4c3faa7",
+        "name": "Prepare JSON Payload",
+        "func": "const inputMessage = msg.payload.content; // Telegram message text\n\nmsg.payload = {\n    input_value: inputMessage,\n    output_type: \"chat\",\n    input_type: \"chat\",\n    tweaks: {\n        \"ChatInput-ASFVG\": {},\n        \"ChatOutput-DoPHy\": {},\n        \"OpenAIModel-STT4z\": {}\n    }\n};\n\nnode.warn(\"Prepared JSON payload: \" + JSON.stringify(msg.payload));\n\nmsg.chatId = msg.originalMessage.chat.id;  // Save the chat ID\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "4abd8482cf84b759"
+            ]
+        ]
+    },
+    {
+        "id": "4abd8482cf84b759",
+        "type": "http request",
+        "z": "838919a0b4c3faa7",
+        "name": "Send Request to Langflow",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:7860/api/v1/run/212b7646-c0cc-4174-b4e4-67f8ab7d1e45?stream=false",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 680,
+        "y": 240,
+        "wires": [
+            [
+                "190cb42997704283"
+            ]
+        ]
+    },
+    {
+        "id": "190cb42997704283",
+        "type": "function",
+        "z": "838919a0b4c3faa7",
+        "name": "Extract Output Message",
+        "func": "try {\n    // Log the payload to debug\n    node.warn(\"Received response: \" + JSON.stringify(msg.payload));\n\n    // Ensure the payload structure is as expected\n    if (msg.payload && msg.payload.outputs && msg.payload.outputs[0] &&\n        msg.payload.outputs[0].outputs && msg.payload.outputs[0].outputs[0] &&\n        msg.payload.outputs[0].outputs[0].results && msg.payload.outputs[0].outputs[0].results.message &&\n        msg.payload.outputs[0].outputs[0].results.message.data && msg.payload.outputs[0].outputs[0].results.message.data.text) {\n\n        // Extract the message text\n        const outputMessage = msg.payload.outputs[0].outputs[0].results.message.data.text;\n\n        // Prepare the payload for the next node\n        msg.payload = { text: outputMessage };\n    } else {\n        throw new Error(\"Unexpected response structure\");\n    }\n} catch (error) {\n    msg.payload = \"Error extracting message: \" + error.message;\n    node.error(error.message);\n}\nmsg.chatId = msg.originalMessage.chat.id;  // Save the chat ID\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 240,
+        "wires": [
+            [
+                "51f8d054e4f2676e",
+                "490635acf5d3c3ce"
+            ]
+        ]
+    },
+    {
+        "id": "51f8d054e4f2676e",
+        "type": "function",
+        "z": "838919a0b4c3faa7",
+        "name": "Prepare Telegram Message",
+        "func": "// Prepare the payload for the Telegram sender node\n\n\n// msg.payload = {\n//     chatId:\"6090668402\", // Use the extracted chat ID from the previous node\n//     type: \"message\",       // Set the type of message you want to send\n//     content: msg.payload.text // Extract the text from the previous node\n// };\n\n// return msg;\n\n\n// Prepare Telegram Message Node\nmsg.payload = {\n    chatId: msg.chatId, // Use the extracted chat ID from the previous node\n    type: \"message\",         // Set the type of message you want to send\n    content: msg.payload.text // Extract the text from the previous node\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1260,
+        "y": 240,
+        "wires": [
+            [
+                "0a3cff63508cf579"
+            ]
+        ]
+    },
+    {
+        "id": "0a3cff63508cf579",
+        "type": "chatbot-telegram-send",
+        "z": "838919a0b4c3faa7",
+        "bot": "c4323f786e98e37e",
+        "botProduction": "",
+        "track": false,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 0,
+        "x": 1570,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2add353f53d88600",
+        "type": "chatbot-telegram-receive",
+        "z": "838919a0b4c3faa7",
+        "bot": "c4323f786e98e37e",
+        "botProduction": "",
+        "x": 110,
+        "y": 240,
+        "wires": [
+            [
+                "b7ae2574aaf21011"
+            ]
+        ]
+    },
+    {
+        "id": "274026c37d2e8bc2",
+        "type": "e-mail",
+        "z": "838919a0b4c3faa7",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "authtype": "BASIC",
+        "saslformat": true,
+        "token": "oauth2Response.access_token",
+        "secure": true,
+        "tls": true,
+        "name": "oyasizakiedu@gmail.com",
+        "dname": "email",
+        "x": 1530,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "490635acf5d3c3ce",
+        "type": "function",
+        "z": "838919a0b4c3faa7",
+        "name": "Extracting the message",
+        "func": "\nconst messageText = msg.payload.text; // Extract the text from the payload\nmsg.payload = messageText; // Set the payload directly to the message text\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 160,
+        "wires": [
+            [
+                "274026c37d2e8bc2"
+            ]
+        ]
+    },
+    {
+        "id": "c4323f786e98e37e",
+        "type": "chatbot-telegram-node",
+        "botname": "lngrd_bot",
+        "usernames": "",
+        "polling": "1000",
+        "store": "",
+        "log": "",
+        "debug": false,
+        "skipMediaFiles": false,
+        "webHook": "",
+        "connectMode": "polling",
+        "storeMessages": true,
+        "enableMissionControl": false,
+        "inspectMessages": true,
+        "chatbotId": ""
+    }
+]
