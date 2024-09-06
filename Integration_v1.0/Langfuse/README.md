@@ -6,7 +6,7 @@
 
 
 
-### Lagfuse itegrated node
+### Lagfuse Itegrated Node
 
 ![image](https://github.com/user-attachments/assets/923b0ce2-d3a9-4a51-a5e8-c8bb47ba0d03)
 
