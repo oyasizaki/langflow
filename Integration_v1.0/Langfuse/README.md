@@ -1,4 +1,8 @@
-## Lagfuse Integration
+# Lagfuse Integration 
+There are 2 ways you can integrate Langfuse with langflow which are
+
+
+## 1. 
 
 ### Flow
 
@@ -17,5 +21,9 @@
 ![Output](https://github.com/user-attachments/assets/a6bb5fdb-6c80-4337-9dc9-1a9712895836)
 
 
+## 2.
+## Langfuse Node
+
+![image](https://github.com/user-attachments/assets/16a0edcb-b45d-4445-a86c-f959a5f7ece6)
 
 
