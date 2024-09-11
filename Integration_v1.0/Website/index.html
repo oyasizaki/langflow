@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Langflow Chat Example</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    /* Header styling */
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      border-bottom: 3px solid #4CAF50;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    /* Main content styling */
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Welcome to Langflow Chat Example</h1>
+  </header>
+
+  <main>
+    <!-- Include the Langflow embedded chat script -->
+    <script src="https://cdn.jsdelivr.net/gh/logspace-ai/langflow-embedded-chat@v1.0.6/dist/build/static/js/bundle.min.js"></script>
+
+    <!-- Langflow Chat Component -->
+    <langflow-chat
+      window_title="Basic Prompting (Hello, World)"
+      flow_id="910723bb-fd4d-4575-8358-47565aa3a188"
+      host_url="http://localhost:7860"
+    ></langflow-chat>
+  </main>
+
+  <footer>
+    <p>Langflow Chat Example - Powered by Langflow-embedded-chat</p>
+  </footer>
+
+</body>
+</html>
